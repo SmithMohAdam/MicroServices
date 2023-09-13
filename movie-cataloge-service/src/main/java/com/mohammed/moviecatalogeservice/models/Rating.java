@@ -1,4 +1,4 @@
-package com.mohammed.movieratingservice.models;
+package com.mohammed.moviecatalogeservice.models;
 
 public class Rating {
 
