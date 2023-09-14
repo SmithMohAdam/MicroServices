@@ -28,12 +28,12 @@ public class MovieCatalogCotroller {
     public List<CatalogItem> getCatalog(@PathVariable("userId") String userId){
 
 
-        UserRating userRating = restTemplate.getForObject("http://localhost:8083/rating/user/"+userId, UserRating.class); 
+        UserRating userRating = restTemplate.getForObject("http://movie-rating-service/rating/user/"+userId, UserRating.class); 
 
        return userRating.getRating().stream().map(rate ->{
 
         
-           Movie movie = restTemplate.getForObject("http://localhost:8082/movies/"+rate.getMovie(), Movie.class);
+           Movie movie = restTemplate.getForObject("http://movie-info-service/movies/"+rate.getMovie(), Movie.class);
             return new  CatalogItem(movie.getName(), userId, rate.getRate());
             
         })
